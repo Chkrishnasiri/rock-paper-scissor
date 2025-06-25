@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Rock Paper Scissors</title>
+  <style>
+    body {
+      text-align: center;
+      font-family: Arial, sans-serif;
+      background: #f0f0f0;
+    }
+    h1 {
+      margin-top: 50px;
+    }
+    .choices {
+      margin: 30px;
+    }
+    .choice {
+      font-size: 24px;
+      margin: 10px;
+      padding: 10px 20px;
+      cursor: pointer;
+      border: 2px solid #444;
+      border-radius: 5px;
+      background-color: #fff;
+    }
+    #result {
+      font-size: 24px;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Rock Paper Scissors</h1>
+  <div class="choices">
+    <button class="choice" onclick="play('Rock')">🪨 Rock</button>
+    <button class="choice" onclick="play('Paper')">📄 Paper</button>
+    <button class="choice" onclick="play('Scissors')">✂️ Scissors</button>
+  </div>
+  <div id="result"></div>
+
+  <script>
+    function play(userChoice) {
+      const options = ['Rock', 'Paper', 'Scissors'];
+      const computerChoice = options[Math.floor(Math.random() * 3)];
+      let result = '';
+
+      if (userChoice === computerChoice) {
+        result = "It's a tie!";
+      } else if (
+        (userChoice === 'Rock' && computerChoice === 'Scissors') ||
+        (userChoice === 'Paper' && computerChoice === 'Rock') ||
+        (userChoice === 'Scissors' && computerChoice === 'Paper')
+      ) {
+        result = `You win! ${userChoice} beats ${computerChoice}`;
+      } else {
+        result = `You lose! ${computerChoice} beats ${userChoice}`;
+      }
+
+      document.getElementById('result').textContent = result;
+    }
+  </script>
+</body>
+</html>
